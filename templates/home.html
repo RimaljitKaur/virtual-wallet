@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block page %}
+<h2>Home Page</h2>
+<div class="container">
+    <h3> 
+        <span style="color:dodgerblue ">Welcome {{request.user.username}}</span>
+    </h3>
+    <ul style="list-style-type:square;">
+        <li><a href="../wallet">Wallet</a></li>
+        <li><a href="../send">Send Money</a></li>
+        <li><a href="../receive">Request Money</a></li>
+        <li><a href="../requests">Requests received</a></li>
+        <li><a href="../logout">logout</a></li>
+    </ul>
+</div>
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block page %}
+<h2>Wallet</h2>
+<div class="container">
+    <h3> 
+        <span style="color:dodgerblue ">Hello {{request.user.username}}</span>
+    </h3>
+    <a style="float:right" href="../home">Back</a>
+    <table width="100%" style="margin-top:30px; margin-bottom:30px;">
+        <tr>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Requested By</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        {% for i in qs %}
+        <tr>
+            <td>{{i.date}}</td>
+            <td>{{i.amount}}</td>
+            <td>{{i.requested_by}}</td>
+            <td>{{i.status}}</td>
+            <td>
+                {% if i.action %}
+                {{i.action}}
+                {% else %}
+                <div id="action"></div>
+                <span id="actions">
+                        <button id="accept" onclick="deleteitem('accepted')">accept</button>
+                        <button id="reject" onclick="deleteitem('denied')">reject</button>
+                </span>
+                {% endif %}
+                <form method="post" id="formabc">
+                    {% csrf_token %}
+                    <input type="text" id="status" name="action" value="N.A." hidden>
+                    <input type="text" name="reqid" value="{{i.req_id}}" hidden>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        
+    </table>
+
+
+    <a href="../logout">logout</a>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script type="text/javascript">
+    var action = document.getElementById('actions');
+    function deleteitem(str){
+        document.getElementById('status').setAttribute("value",str);
+        console.log(str)
+        action.remove();
+        submit()
+    }
+    function submit(){
+        let form = document.getElementById("formabc");
+        form.submit();
+    }
+
+</script>
+{% endblock %}

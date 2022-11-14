@@ -1,0 +1,25 @@
+.example_e {
+    color: #ffffff !important;
+    font-weight: bolder;
+    padding: 20px;
+    display: inline-block;
+    transition: all 0.3s ease 0s;
+    font-size: larger;
+    }
+    .example_e:hover {
+    color: #f9d81b !important;
+    font-weight: 700 !important;
+    letter-spacing: 3px;
+    background: none;
+    transition: all 0.3s ease 0s;
+    }
+nav
+{
+    text-shadow: 2px 2px 1px rgb(3, 0, 0);
+    background-color: #259B9A;
+    box-shadow: 0px 3px 0px rgb(3, 0, 0, 0.1);
+}
+.navbar-toggler
+{
+    background-color: skyblue;
+}

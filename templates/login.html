@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block page %}
+<div class="login-box">
+    <h2>Login Page</h2>
+    <form class="mx-auto" method="post">
+      {% csrf_token %}
+      <label>Username</label>
+      <input name="username" type="text" placeholder="" required />
+      <label>Password</label>
+      <input name="password" type="password" placeholder="" required />
+      <input type="submit" />
+    </form>
+</div>
+  <p class="para-2">
+    Not have an account? <a href="../">Sign Up Here</a>
+  </p>
+{% endblock %}

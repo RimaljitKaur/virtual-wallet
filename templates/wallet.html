@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block page %}
+<h2>Wallet</h2>
+<div class="container">
+    <h3> 
+        <span style="color:dodgerblue ">Hello {{request.user.username}}</span>
+    </h3>
+    <a style="float:right" href="../home">Back</a>
+    <h3>Your Balance:
+        {{balance}} </h3>
+
+    <table width="100%" style="margin-top:30px; margin-bottom:30px;">
+        <tr>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Cr/Dr</th>
+            <th>Balance</th>
+            <th>Remarks</th>
+        </tr>
+        {% for i in qs %}
+        <tr>
+            <td>{{i.date}}</td>
+            <td>{{i.amount}}</td>
+            <td>{{i.request_type}}</td>
+            <td>{{i.balance}}</td>
+            <td>{{i.remarks}}</td>
+        </tr>
+        {% endfor %}
+        
+    </table>
+
+    <a href="../logout">logout</a>
+</div>
+
+{% endblock %}

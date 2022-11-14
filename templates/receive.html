@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block page %}
+<h2>Wallet</h2>
+<div class="container">
+    <h3> 
+        <span style="color:dodgerblue ">Hello {{request.user.username}}</span>
+    </h3>
+    <a style="float:right" href="../home">Back</a>
+    <p>Select a user and specify amount you want to request from them.</p>
+
+    <form class="mx-auto" method="post">
+        {% csrf_token %}
+        <label>Username</label>
+        <input name="username" type="text" placeholder="" required />
+        <label>Amount</label>
+        <input name="amount" type="number" placeholder="" required />
+        <input type="submit" value="Request Money"/>
+      </form>
+
+<a href="../logout">logout</a>
+</div>
+{% endblock %}

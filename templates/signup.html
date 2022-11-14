@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block page %}
+<div class="signup-box">
+  <h2>Sign Up Page</h2>
+  <form class="mx-auto" method="post">
+    {% csrf_token %}
+    <label>User Name</label>
+    <input type="text" name="username" placeholder="" required />
+    <label>Password</label>
+    <input type="password" name="password" placeholder="" required />
+    <label>User Type</label>
+    <select name="usertype" style="margin-bottom: 20px;" required>
+      <option selected disabled></option>
+      <option>premium</option>
+      <option>non-premium</option>
+    </select>
+    <input type="submit" href="../login">
+  </form>
+</div>
+<p>
+  Already have an account? <a href="../login">Login here</a>
+</p>
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript">
+  
+</script>
+{% endblock %}
